@@ -1,25 +1,24 @@
-$('#Login').on('click', function(e) {
-    query1= $("#username").val();
-    query2= $("#password").val();
-    query = {
+$('form').on('submit', function(e) {
+    e.preventDefault();
+
+    const query1= $("#username").val();
+    const query2= $("#password").val();
+    const query = {
         'username': query1,
         'password': query2
     }
-    var formData = new FormData();
-    formData.append('username',query1);
-    formData.append('password',query2);
+
     $.ajax({
         method: "POST",
         url: "https://livraria-app.herokuapp.com/api/token/",
-        data: formData,
-        enctype: 'multipart/form-data',
-        function(result) {
+        contentType: "application/json",
+        data: JSON.stringify(query),
+        success: function(result) {
              console.log(result);
-       },
-    //     error: function ajaxError(jqXHR) {
-    //         console.error('Error: ', jqXHR.responseText);
-    //     }
-         
+        },
+        error: function(jqXHR) {
+            console.error('Error: ', jqXHR.responseText);
+        }   
    }
 )
-})
+})  
