@@ -204,3 +204,42 @@ function construirTabelaCategorias() {
   });
 }
     
+function enviarDados() {
+    const titulo = $('input[name="Titulo"]').val();
+    const ISBN = $('input[name="ISBN"]').val();
+    const quantidade = $('input[name="Quantidade"]').val();
+    const preco = $('input[name="Preço"]').val();
+    const categoria = $('input[name="Categoria"]').val();
+    const editora = $('input[name="Editora"]').val();
+    const autoresInput = $('#autoresTextarea').val();
+    const autores = autoresInput.split(',').map(author => author.trim());
+    
+    
+    const data = {
+        "titulo": titulo,
+        "ISBN": ISBN,
+        "quantidade": quantidade,
+        "preco": preco,
+        "categoria": categoria,
+        "editora": editora,
+        "autores": autores
+    };
+
+    const token = window.localStorage.getItem("json_data")
+    $.ajax({
+        type: 'POST',
+        url: 'https://livraria-app.herokuapp.com/api/livros/',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        headers: {
+            "Authorization": "Bearer " + token
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            // Algum erro ocorreu
+            console.error(errorThrown);
+        }
+    });
+}
