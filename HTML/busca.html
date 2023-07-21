@@ -5,79 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="../JS/API.js"></script>
 </head>
 <body>
     <header>
-        <a href="index.html">Voltar</a>
+        <a href="página1.html">Voltar</a>
         <a href="editar.html">Editar Livro</a>
         <a href="Remover-Livro.html">Remover Livro</a>
         <a href="Cadastro-Livro.html">Adicionar Livro</a>
         <a href="login.html">Deslogar</a>
     </header>
-    <p>Página com a função de listar autores, categoria ou editoras (Decidir se vamos deixar o link bruto para sites ou realizar o acesso) (Fazer com que apenas 1 table apareça por vez) (fazer a mostra em tabela completa ou seleção por id)</p>
+    <script src="../JS/API.js"></script>
+    <input id="Autores" type="checkbox" onchange="construirTabela()"> Autores
+    <input id="Categorias" type="checkbox" onchange="construirTabela()"> Categorias
+    <input id="Editoras" type="checkbox" onchange="construirTabela()"> Editoras
+    <br>
+    <input type="text" id="abusca" value="" placeholder="Faça sua pesquisa"> 
+    <button onclick="comecabusca()">Procurar</button>
+    <table id="tabela-autores">
+        <tr>
+            <th></th>
+        </tr>
+    </table>
+    <br>
+    <table id="tabela-categorias">
+        <tr>
+            <th></th>
+        </tr>
+    </table>
+    <br>
+    <table id="tabela-editoras">
+        <tr>
+            <th></th>
+        </tr>
+    </table>
     
-    
-
-
-    <table>
-        <tr>
-            <th>Autores</th>
-            <th>ID</th>
-        </tr>
-        <tr>
-            <td>Victor Mesnerovicz</td>
-            <td>36</td>
-        </tr>
-        <tr>
-            <td>Nicolas Saraiva</td>
-            <td>26</td>
-        </tr>
-        <tr>
-            <td>Guilherme</td>
-            <td>69</td>
-        </tr>
-    </table>
-    <br><br>
-    <table>
-        <tr>
-            <th>Categorias</th>
-            <th>ID</th>
-        </tr>
-        <tr>
-            <td>Romance</td>
-            <td>22</td>
-        </tr>
-        <tr>
-            <td>Romance, Suspense e Mistério</td>
-            <td>14</td>
-        </tr>
-        <tr>
-            <td>Fantasia</td>
-            <td>6</td>
-        </tr>
-    </table>
-    <br> <br>
-    <table>
-        <tr>
-            <th>Editoras</th>
-            <th>Site</th>
-            <th>ID</th>
-        </tr>
-        <tr>
-            <td>Principis</td>
-            <td><a href="https://www.cirandacultural.com.br/principis" >Clique aqui</a></td>
-            <td>24</td>
-        </tr>
-        <tr>
-            <td>Novatec</td>
-            <td> <a href="https://novatec.com.br">Clique aqui</a></td>
-            <td>13</td>
-        </tr>
-        <tr>
-            <td>WMF Martins</td>
-            <td><a href="https://www.wmfmartinsfontes.com.br">Clique aqui</a></td>
-            <td>28</td>
-        </tr>
-    </table>
 </body>
 </html>
