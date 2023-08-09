@@ -14,35 +14,25 @@
         <a href="Cadastro-Livro.html">Adicionar Livro</a>
         <a href="login.html">Deslogar</a>
     </header>
-
-    <script>
-        const jsonString = window.localStorage.getItem("json_data")
-        console.log(jsonString);
-    </script>
-    <button id="Teste"></button>
-    <p>Nesta Página teremos uma tabela dos livros que estão cadastrados na API (tentar fazer uma especie de filtro para achar livros pelas especificações)</p>
-    <table>
-        <tr>
-            <th>Titulo</th>
-            <th>ISBN</th>
-            <th>Autores</th>
-            <th>Editora</th>
-            <th>Categoria</th>
-            <th>Quantidade</th>
-            <th>Preço</th>
-        </tr>
-        <tr>
-            <td id="TLX">xxx</td>
-            <td id="ILX">xxx</td>
-            <td id="ALX">xxx</td>
-            <td id="ELX">xxx</td>
-            <td id="CLX">xxx</td>
-            <td id="QLX">xxx</td>
-            <td id="PLX">xxx</td>
-        </tr>
-    </table>
-    <br>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="../JS/API.js"></script>
+    <script>fetchData()</script>
+    <p>Nesta Página teremos uma tabela dos livros que estão cadastrados na API (tentar fazer uma especie de filtro para achar livros pelas especificações)</p>
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>ISBN</th>
+                <th>Autores</th>
+                <th>Editora</th>
+                <th>Categoria</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody id="tabelivro">
+        </tbody>
+    </table>
+    <br>
+    
 </body>
 </html>

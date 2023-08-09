@@ -243,3 +243,37 @@ function enviarDados() {
         }
     });
 }
+function fetchData() {
+  const token = window.localStorage.getItem("json_data")
+  $.ajax({
+    url: "https://livraria-app.herokuapp.com/api/livros/",
+    type: "GET",
+    dataType: "json",
+    headers: {
+      "Authorization": "Bearer " + token
+    },
+    success: function(data) {
+      faztable(data);
+    },
+    error: function(error) {
+      console.error("Erro ao obter os dados:", error);
+    }
+  });
+  
+}
+function faztable(data) {
+  const tabe = $("#tabelivro");
+  tabe.empty();
+
+  data.forEach(function(livro) {
+    const novalinha = $("<tr>");
+    novalinha.append($("<td>").text(livro.titulo));
+    novalinha.append($("<td>").text(livro.isbn));
+    novalinha.append($("<td>").text(livro.autores.join(", ")));
+    novalinha.append($("<td>").text(livro.editora));
+    novalinha.append($("<td>").text(livro.categoria));
+    novalinha.append($("<td>").text(livro.quantidade));
+    novalinha.append($("<td>").text(livro.preco));
+    tabe.append(newRow);
+  });
+}
