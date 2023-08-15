@@ -243,7 +243,7 @@ function enviarDados() {
         }
     });
 }
-function fetchData() {
+function DESGRAÇADETABLE() {
   const token = window.localStorage.getItem("json_data")
   $.ajax({
     url: "https://livraria-app.herokuapp.com/api/livros/",
@@ -259,21 +259,45 @@ function fetchData() {
       console.error("Erro ao obter os dados:", error);
     }
   });
-  
 }
+// function edita() {
+//   const token = window.localStorage.getItem("json_data")
+//   $.ajax({
+//     url: "https://livraria-app.herokuapp.com/api/livros/"
+
+
+//   });
+
+
+// }
+
 function faztable(data) {
   const tabe = $("#tabelivro");
   tabe.empty();
 
   data.forEach(function(livro) {
-    const novalinha = $("<tr>");
-    novalinha.append($("<td>").text(livro.titulo));
-    novalinha.append($("<td>").text(livro.isbn));
-    novalinha.append($("<td>").text(livro.autores.join(", ")));
-    novalinha.append($("<td>").text(livro.editora));
-    novalinha.append($("<td>").text(livro.categoria));
-    novalinha.append($("<td>").text(livro.quantidade));
-    novalinha.append($("<td>").text(livro.preco));
-    tabe.append(newRow);
+    console.log(livro)
+    var row = 
+    "<tr>"+
+    "<th> ID </th>"+
+    "<th> Titulo </th>"+
+    "<th> ISBN </th>"+
+    "<th> Quantidade </th>"+
+    "<th> Preço </th>"+
+    "<th> Categoria </th>"+
+    "<th> Editora </th>"+
+    "<th> Autores </th>"+
+    "</tr>"+
+        "<tr>" +
+        "<td>" + livro.id + "</td>" +
+        "<td>" + livro.titulo + "</td>" +
+        "<td>" + livro.ISBN + "</td>" +
+        "<td>" + livro.quantidade + "</td>" +
+        "<td>" + livro.preco + "</td>" +
+        "<td>" + livro.categoria["nome"] + "</td>" +
+        "<td>" + livro.editora["nome"] + "</td>" +
+        "<td>" + livro.autores[0]["nome"] + "</td>" +
+        "</tr>";
+    $(tabe).append(row);
   });
 }
