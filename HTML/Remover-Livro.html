@@ -14,20 +14,11 @@
         <a href="Cadastro-Livro.html">Adicionar Livro</a>
         <a href="login.html">Deslogar</a>
     </header>
-    <h4>Esta página serve para remover livros</h4>
-    <form action="index.html">
-        <fieldset>
-            <label for="Titulo">Titulo <input type="text"></label>  <br>
-            <label for="ISBN">ISBN <input type="text"></label> <br>
-            <label for="Preço">Preço<input type="text"></label> <br>
-            <label for="Quantidade">Quantidade<input type="text"></label> <br>
-            <label for="Autores">Autores</label><br>
-            <textarea name="Autores" id="autoresTextarea" placeholder="Pode colocar mais de um autor, separe por vírgula"></textarea><br>
-            <label for="Editora">Editora<input type="text"></label> <br>
-            <label for="Categoria">Categoria<input type="text"></label> <br>
-            <button>enviar</button>
-        </fieldset>
-    </form>
+    <h4>Esta página serve para remover livros, saiba que essa ação não pode ser revertida</h4>
+    <fieldset>
+        <label for="ID">ID <input type="text" name="ID" placeholder="Obrigatório" required></label> <br><br>
+        <button onclick="removeDados()">enviar</button>
+    </fieldset>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="../JS/API.js"></script>
 </body>
