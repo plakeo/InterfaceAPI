@@ -166,8 +166,7 @@ function construirTabelaAutores() {
       console.log("Erro na requisição:", error);
     }
   });
-    }
-
+}
 function construirTabelaCategorias() {
     var busca = window.localStorage.getItem("busca");
     if(busca == null) {
@@ -203,7 +202,6 @@ function construirTabelaCategorias() {
     }
   });
 }
-    
 function enviarDados() {
     const titulo = $('input[name="Titulo"]').val();
     const ISBN = $('input[name="ISBN"]').val();
@@ -213,8 +211,6 @@ function enviarDados() {
     const editora = $('input[name="Editora"]').val();
     const autoresInput = $('#autoresTextarea').val();
     const autores = autoresInput.split(',').map(author => author.trim());
-    
-    
     const data = {
         "titulo": titulo,
         "ISBN": ISBN,
@@ -224,7 +220,6 @@ function enviarDados() {
         "editora": editora,
         "autores": autores
     };
-
     const token = window.localStorage.getItem("json_data")
     $.ajax({
         type: 'POST',
@@ -236,10 +231,138 @@ function enviarDados() {
         },
         success: function (response) {
             console.log(response);
+            window.location.href ="página1.html";
         },
-        error: function (xhr, textStatus, errorThrown) {
-            // Algum erro ocorreu
-            console.error(errorThrown);
+        error: function(error) {
+          console.log(error);
         }
     });
+}
+function DESGRAÇADETABLE() {
+  const token = window.localStorage.getItem("json_data")
+  $.ajax({
+    url: "https://livraria-app.herokuapp.com/api/livros/",
+    type: "GET",
+    dataType: "json",
+    headers: {
+      "Authorization": "Bearer " + token
+    },
+    success: function(data) {
+      faztable(data);
+    },
+    error: function(error) {
+      console.error("Erro ao obter os dados:", error);
+    }
+  });
+}
+function editalivro() {
+  const token = window.localStorage.getItem("json_data")
+  const id = $('input[name="ID"]').val();
+  const titulo = $('input[name="Titulo"]').val() || null;
+  const ISBN = $('input[name="ISBN"]').val() || null;
+  const quantidade = $('input[name="Quantidade"]').val() || null;
+  const preco = $('input[name="Preço"]').val() || null;
+  const categoria = $('input[name="Categoria"]').val() || null;
+  const editora = $('input[name="Editora"]').val() || null;
+  const autoresInput = $('#autoresTextarea').val() || null;
+  let autores = null;
+  if (autoresInput !== null) {
+    autores = autoresInput.split(',').map(author => author.trim());
+  }
+  const data = {
+      "titulo": titulo,
+      "ISBN": ISBN,
+      "quantidade": quantidade,
+      "preco": preco,
+      "categoria": categoria,
+      "editora": editora,
+      "autores": autores
+  };
+  if(titulo == null||ISBN == null||quantidade == null||preco==null||categoria==null||editora==null||autores==null){
+    for (const key in data) {
+      if (data[key] === null) {
+          delete data[key];
+      }
+    }
+    $.ajax({
+      url: "https://livraria-app.herokuapp.com/api/livros/"+id+"/",
+      type: "PATCH",
+      contentType: "application/json",
+      data: JSON.stringify(data),
+      headers: {
+        "Authorization": "Bearer " + token
+      },
+      success: function (response) {
+        console.log(response);
+        window.location.href ="página1.html";
+    },error: function(error) {
+      console.log(error);
+    }
+    });
+  }
+  else{
+    $.ajax({
+      url: "https://livraria-app.herokuapp.com/api/livros/"+id+"/",
+      type: "PUT",
+      contentType: "application/json",
+      data: JSON.stringify(data),
+      headers: {
+        "Authorization": "Bearer " + token
+      },
+      success: function (response) {
+        console.log(response);
+        window.location.href ="página1.html";
+    },error: function(error) {
+      console.log(error);
+    }
+    });
+  }
+}
+function faztable(data) {
+  const tabe = $("#tabelivro");
+  tabe.empty();
+
+  data.forEach(function(livro) {
+    var row = 
+    "<tr>"+
+    "<th> ID </th>"+
+    "<th> Titulo </th>"+
+    "<th> ISBN </th>"+
+    "<th> Quantidade </th>"+
+    "<th> Preço </th>"+
+    "<th> Categoria </th>"+
+    "<th> Editora </th>"+
+    "<th> Autores </th>"+
+    "</tr>"+
+        "<tr>" +
+        "<td>" + livro.id + "</td>" +
+        "<td>" + livro.titulo + "</td>" +
+        "<td>" + livro.ISBN + "</td>" +
+        "<td>" + livro.quantidade + "</td>" +
+        "<td>" + livro.preco + "</td>" +
+        "<td>" + livro.categoria["nome"] + "</td>" +
+        "<td>" + livro.editora["nome"] + "</td>" +
+        "<td>" + livro.autores[0]["nome"] + "</td>" +
+        "</tr>";
+    $(tabe).append(row);
+  });
+}
+function removeDados() {
+  const id = $('input[name="ID"]').val();
+  const token = window.localStorage.getItem("json_data")
+  $.ajax({
+      type: 'DELETE',
+      url: "https://livraria-app.herokuapp.com/api/livros/"+id+"/",
+      contentType: 'application/json',
+      headers: {
+          "Authorization": "Bearer " + token
+      },
+      success: function (response) {
+          console.log(response);
+          window.location.href ="página1.html";
+      },
+      error: function(error) {
+        console.log(error);
+      }
+  });
 }

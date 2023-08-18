@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../style/remover-livro.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <title>Remover livro</title>
 </head>
 <body>
-    <p>Aqui um forms para remover um livro do cadastro</p>
     <header>
         <a href="busca.html">Buscar</a>
         <a href="editar.html">Editar</a>
@@ -15,19 +17,13 @@
         <a href="Cadastro-Livro.html">Adicionar Livro</a>
         <a href="login.html">Deslogar</a>
     </header>
-    <P>página para cadastro de livros</P>
-    <p>fazer um forms para isso</p>
-    <form action="index.html">
-        <fieldset>
-            <label for="Titulo">Titulo <input type="text"></label>
-            <label for="ISBN">ISBN <input type="text"></label>
-            <label for="Preço">Preço<input type="text"></label>
-            <label for="Quantidade">Quantidade<input type="text"></label>
-            <label for="Autores">Autores<input type="text" placeholder="Pode colocar mais de um autor"></label>
-            <label for="Editora">Editora<input type="text"></label>
-            <label for="Categoria">Categoria<input type="text"></label>
-            <button>enviar</button>
-        </fieldset>
+    <form>
+    <fieldset>
+        <label for="ID">ID <input type="text" name="ID" placeholder="Obrigatório" required></label> <br><br>
+        <button onclick="removeDados()" id="enviar">Deletar</button>
+    </fieldset>
     </form>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="../JS/API.js"></script>
 </body>
 </html>

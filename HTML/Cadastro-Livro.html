@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../style/cadastro-livro.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <title>Cadastrar livro</title>
 </head>
 <body>
     <header>
@@ -14,17 +17,18 @@
         <a href="página1.html">Voltar</a>
         <a href="login.html">Deslogar</a>
     </header>
-    <form action="página1.html">
+    
+    <form>
         <fieldset>
-            <label for="Titulo">Titulo <input type="text"></label> <br>
-            <label for="ISBN">ISBN <input type="text"></label> <br>
-            <label for="Preço">Preço<input type="text"></label> <br>
-            <label for="Quantidade">Quantidade<input type="text"></label> <br>
+            <label for="Titulo">Titulo <input type="text" name="Titulo" required></label> <br>
+            <label for="ISBN">ISBN <input type="text" name="ISBN" required></label> <br>
+            <label for="Preço">Preço<input type="text" name="Preço" required></label> <br>
+            <label for="Quantidade">Quantidade<input type="text" name="Quantidade" required></label> <br>
             <label for="Autores">Autores</label><br>
-            <textarea name="Autores" id="autoresTextarea" placeholder="Pode colocar mais de um autor, separe por vírgula"></textarea><br>
-            <label for="Editora">Editora<input type="text"></label> <br>
-            <label for="Categoria">Categoria<input type="text"></label> <br>
-            <button onclick="enviarDados()">enviar</button>
+            <textarea name="Autores" id="autoresTextarea" required placeholder="Pode colocar mais de um autor, lembre de separar por vírgula"></textarea><br>
+            <label for="Editora">Editora<input type="text" name="Editora" required></label> <br>
+            <label for="Categoria">Categoria<input type="text" name="Categoria" required></label> <br>
+            <button onclick="enviarDados()" id="enviar">Registrar</button>
         </fieldset>
     </form>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
